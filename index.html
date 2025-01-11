@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veiligheidsdienst Nederland</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="vdn33.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="navbar.js" defer></script>
+    <style>
+        /* Algemene opmaak */
+        /* Algemene opmaak */
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #002855;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                z-index: 1000;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 10px;
+                padding: 20px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .services h2,
+            .about h2,
+            .contact h2 {
+                font-size: 28px;
+            }
+
+            .services p,
+            .about p,
+            .contact .info p {
+                font-size: 14px;
+            }
+
+            .services .cards,
+            .reviews .review-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .contact .map-form-container {
+                flex-direction: column;
+            }
+
+            .contact form {
+                width: 100%;
+            }
+
+            .contact iframe {
+                width: 100%;
+            }
+        }
+
+        header {
+            background: linear-gradient(90deg, #002855, #004b8d);
+            color: #fff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #002855;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                z-index: 1000;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 10px;
+                padding: 20px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 15px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #ffcc00;
+            color: #002855;
+            border-radius: 5px;
+            transform: translateY(-3px);
+        }
+
+        /* Hero-sectie */
+
+        .hero {
+            background: linear-gradient(rgba(0, 40, 85, 0.75), rgba(0, 40, 85, 0.75)), url('test.png') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            background-size: cover;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            background-color: #ffcc00;
+            color: #002855;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .hero button:hover {
+            background-color: #e6b800;
+            transform: scale(1.05);
+        }
+
+        /* Diensten-sectie */
+
+        .services {
+            padding: 70px 20px;
+            background-color: #fff;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .services h2 {
+            font-size: 32px;
+            margin-bottom: 25px;
+            color: #002855;
+            font-weight: 600;
+        }
+
+        .services p {
+            font-size: 16px;
+            margin-bottom: 50px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .services .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
+        .services .card {
+            background: #f9f9f9;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            transition: box-shadow 0.3s, transform 0.3s;
+            text-align: center;
+            max-width: 350px;
+            box-sizing: border-box;
+        }
+
+        .services .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .services .card i {
+            font-size: 40px;
+            color: #002855;
+            margin-bottom: 20px;
+        }
+
+        .services .card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #002855;
+        }
+
+        .services .card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Over ons-sectie */
+
+        .about {
+            padding: 70px 20px;
+            background-color: #f3f3f3;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 32px;
+            margin-bottom: 25px;
+            color: #002855;
+            font-weight: 600;
+        }
+
+        .about p {
+            font-size: 16px;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+
+        .about img {
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Recensie-sectie */
+
+        .reviews {
+            background-color: #f1f1f1;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .reviews h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #002855;
+            font-weight: 600;
+        }
+
+        .reviews .review-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
+        .reviews .review-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 350px;
+            margin-bottom: 30px;
+        }
+
+        .reviews .review-card p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .reviews .review-card .customer-name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .reviews .review-card .rating {
+            margin: 10px 0;
+            color: #ffcc00;
+        }
+
+        /* Contact-sectie */
+
+        .contact {
+            padding: 70px 20px;
+            background-color: #002855;
+            color: #fff;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .contact .info {
+            margin-bottom: 40px;
+        }
+
+        .contact .info p {
+            margin: 12px 0;
+            font-size: 16px;
+        }
+
+        .contact .info i {
+            margin-right: 10px;
+            color: #ffcc00;
+        }
+
+        /* Flexbox styling for contact form and map */
+
+        .contact .map-form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .contact form {
+            width: 100%;
+            max-width: 500px;
+            display: grid;
+            gap: 20px;
+        }
+
+        .contact iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+
+        .contact form input,
+        .contact form textarea,
+        .contact form button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            box-sizing: border-box;
+        }
+
+        .contact form input,
+        .contact form textarea {
+            margin-bottom: 20px;
+        }
+
+        .contact form button {
+            background-color: #ffcc00;
+            color: #002855;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact form button:hover {
+            background-color: #e6b800;
+        }
+
+        /* Footer */
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer .social-icons {
+            margin: 15px 0;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            color: #ffcc00;
+        }
+
+        footer p {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .services h2,
+            .about h2,
+            .contact h2 {
+                font-size: 28px;
+            }
+
+            .services p,
+            .about p,
+            .contact .info p {
+                font-size: 14px;
+            }
+
+            .services .cards,
+            .reviews .review-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .contact .map-form-container {
+                flex-direction: column;
+            }
+
+            .contact form {
+                width: 100%;
+            }
+
+            .contact iframe {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Veiligheidsdienst Nederland</div>
+        <nav>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-menu">
+        <nav>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#services">Diensten</a></li>
+                    <li><a href="#about">Over Ons</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welkom bij Veiligheidsdienst Nederland</h1>
+        <p>Uw veiligheid, Onze prioriteit.</p>
+        <button>Ontdek Meer</button>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Onze Diensten</h2>
+        <p>Bij Veiligheidsdienst Nederland begrijpen we dat veiligheid voorop staat. Onze missie is om een veilige omgeving te creëren door middel van innovatieve beveiligingsoplossingen.</p>
+        <div class="cards">
+            <div class="card">
+                <i class="fas fa-building"></i>
+                <h3>Objectbeveiliging</h3>
+                <p>Professionele beveiliging voor diverse locaties, van bedrijfspanden tot bouwplaatsen.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Mobiele Surveillance</h3>
+                <p>Snelle respons en 24/7 bewaking door onze mobiele teams.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-user-shield"></i>
+                <h3>Evenementenbeveiliging</h3>
+                <p>Essentieel voor veilige en aangename evenementen.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>Winkelbeveiliging</h3>
+                <p>Bescherming tegen diefstal en vandalisme met gespecialiseerde beveiligers.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Consultancy</h3>
+                <p>Advies op maat om uw beveiliging te optimaliseren.</p>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-user-secret"></i>
+                <h3>Persoonlijke Beveiliging</h3>
+                <p>Individuele beveiliging voor VIP's, executives en andere risicovolle personen.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>Over Ons</h2>
+        <p>Wij zijn een toonaangevend beveiligingsbedrijf dat zich met passie en professionaliteit inzet voor de veiligheid van mensen, bedrijven en evenementen in heel Nederland. Met een ervaren en deskundig team bieden wij op maat gemaakte beveiligingsoplossingen die aansluiten bij de unieke behoeften van onze klanten.
+
+            Onze kernwaarden zijn betrouwbaarheid, innovatie en persoonlijke betrokkenheid. Of het nu gaat om objectbeveiliging, evenementbeveiliging, mobiele surveillance, of andere specialistische diensten, wij leveren hoogwaardige en flexibele oplossingen die bijdragen aan een veilige en vertrouwde omgeving.
+
+            Dankzij onze jarenlange ervaring en toewijding hebben wij een sterke reputatie opgebouwd in de sector. Wij geloven in proactieve samenwerking en staan altijd klaar om met onze klanten mee te denken en hen te ondersteunen bij het bereiken van hun veiligheidsdoelen.
+
+            Uw veiligheid, onze prioriteit.</p>
+        <img src="test2.png" alt="Over Ons">
+    </section>
+
+    <section class="reviews">
+        <h2>Wat onze klanten zeggen</h2>
+        <div class="review-cards">
+            <div class="review-card">
+                <div class="rating">★★★★★</div>
+                <p>"De beveiliging voor ons bedrijfsgebouw is uitstekend. De medewerkers zijn altijd alert en professioneel. Ze hebben ons geholpen bij het creëren van een veilige werkomgeving."</p>
+                <div class="customer-name">Mark Jansen</div>
+            </div>
+            <div class="review-card">
+                <div class="rating">★★★★★</div>
+                <p>"Tijdens ons evenement waren we echt onder de indruk van de evenementenbeveiliging. Ze zorgden ervoor dat alles soepel verliep, zonder ooit opdringerig te zijn. Geweldig werk!"</p>
+                <div class="customer-name">Sophie de Vries</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact</h2>
+        <div class="info">
+            <p>
+                <i class="fas fa-map-marker-alt"></i>
+                Odeonpad 128 1325 AK Almere</p>
+            <p>
+                <i class="fas fa-phone-alt"></i>
+                +31 6 57248326</p>
+            <p>
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:dmsecbeveiliging@gmail.com" style="color: #ffcc00;">Info@veiligheidsdienstnederland.nl</a>
+            </p>
+        </div>
+
+        <!-- Contact Form and Map in Flex Container -->
+        <div class="map-form-container">
+           
+            <!-- Contact Form -->
+            <form action="#" method="POST">
+                <input type="text" name="name" placeholder="Je Naam" required>
+                <input type="email" name="email" placeholder="Je E-mail" required>
+                <textarea name="message" placeholder="Je Bericht" rows="4" required></textarea>
+                <button type="submit">Verzenden</button>
+            </form>
+             <!-- Google Maps iframe -->
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2432.2842274791376!2d5.233472676521997!3d52.3677884797901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c616a7ad8e2a3d%3A0xb6809957ed0381c9!2sOdeonpad%20128%2C%201325%20AK%20Almere%2C%20Nederland!5e0!3m2!1snl!2sus!4v1700749178845!5m2!1snl!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <p>&copy; 2025 Veiligheidsdienst Nederland. Alle rechten voorbehouden.</p>
+    </footer>
+</body>
+
+</html>
